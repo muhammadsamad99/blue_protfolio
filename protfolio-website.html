@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samad Mahmood | Full Stack Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 80px 0 120px;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            position: relative;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header-text h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: -60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        /* Experience Section */
+        .experience-item {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .experience-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .company-name {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        .job-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .job-period {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .job-description {
+            color: var(--gray);
+        }
+        
+        .job-description ul {
+            padding-left: 20px;
+        }
+        
+        .job-description li {
+            margin-bottom: 8px;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-image {
+            height: 200px;
+            background-color: var(--light-gray);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .project-description {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .project-link:hover {
+            color: var(--secondary);
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .skill-tag {
+            background-color: var(--light-gray);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+        
+        .skill-tag.primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Education Section */
+        .education-item {
+            margin-bottom: 20px;
+        }
+        
+        .education-degree {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .education-university {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .education-period {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .footer-text {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-info, .social-links {
+                justify-content: center;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .profile-card {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 25px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #2b6cb0;
+        }
+        
+        .title {
+            color: #2b6cb0;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .tagline {
+            color: #4a5568;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .highlight {
+            background-color: #ebf8ff;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        
+        .skills {
+            margin: 20px 0;
+        }
+        
+        .skill-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .bullet {
+            color: #2b6cb0;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        
+        .cta {
+            text-align: center;
+            margin-top: 25px;
+            font-style: italic;
+            color: #4a5568;
+            font-size: 18px;
+        }
+        
+        .emoji {
+            font-size: 20px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="protfolio-pic.jpeg" alt="Samad Mahmood" class="profile-image">
+                <div class="header-text">
+                    <h1>Samad Mahmood</h1>
+                    <h2>🚀 Senior Software Engineer</h2>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/muhammad-samad-mahmood-01828b192/" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/muhammadsamad99/" class="social-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:msamadm99@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="card">
+            <h2 class="section-title">About Me</h2>
+            <div>
+                <p>With <span class="highlight">5+ years</span> of hands-on experience, I build <span class="highlight">high-performance, scalable backend systems</span> using <span class="highlight">Ruby on Rails, Django and MERN stack</span>.</p>
+                
+                <div class="skills">
+                    <div class="skill-item">
+                        <span class="bullet">🔹</span>
+                        <span><strong>Optimizing databases</strong> (PostgreSQL, MySQL, MongoDB, SQLite, Supabase) & crafting <strong>lightning-fast SQL queries</strong></span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="bullet">🔹</span>
+                        <span>Designing <strong>efficient RESTful APIs</strong> that power seamless user experiences</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="bullet">🔹</span>
+                        <span><strong>Full-stack DevOps</strong>—deploying & managing apps on <strong>AWS, Heroku, Render, and DigitalOcean</strong></span>
+                    </div>
+                </div>
+                
+                <p>I thrive on turning complex challenges into <strong>robust, high-performing systems</strong>—because great software shouldn't just work, it should <strong>excel</strong>.</p>
+                
+                <div class="cta">
+                    Let's build something amazing! <span class="emoji">💡</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="section-title">Work Experience</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="company-name">46Labs, USA</div>
+                        <div class="job-title">Senior Software Engineer</div>
+                    </div>
+                    <div class="job-period">October, 2023 - January, 2025</div>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="company-name">Southville Solutions, Pakistan</div>
+                        <div class="job-title">Software Engineer</div>
+                    </div>
+                    <div class="job-period">September, 2022 - October, 2023</div>
+                </div>
+            </div>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="company-name">Square63, Pakistan</div>
+                        <div class="job-title">Software Engineer</div>
+                    </div>
+                    <div class="job-period">August, 2021 - September, 2022</div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="company-name">IIFATECH, Pakistan</div>
+                        <div class="job-title">Associate Software Engineer</div>
+                    </div>
+                    <div class="job-period">June, 2020 - July, 2021</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('prism.png');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Prism</h3>
+                        <p class="project-description">is an automated billing engine that processes call detail records (CDRs) to generate monthly invoices, with specialized tax calculation through Avalara APIs. The system ensures accurate, compliant billing while eliminating manual processes.</p>
+                        <a href="https://billing.46labs.com/" class="project-link" target="_blank">
+                            View Project <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('jubilee-beauty.png');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Jubilee Rails</h3>
+                        <p class="project-description">Spearheaded the development of Jubilee Rails, a platform that enables entrepreneurs to launch customizable cosmetics brands without handling inventory or shipping logistics, leveraging Shopify's APIs.</p>
+                        <a href="https://www.jubilee.beauty/" class="project-link" target="_blank">
+                            View Project <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('smartli.png');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Smartli API</h3>
+                        <p class="project-description">An AI-powered tool generating SEO optimized product
+                            descriptions and blogs, amplifying marketing efforts in shopify app.</p>
+                        <a href="https://app.smartli.ai/" class="project-link" target="_blank">
+                            View Project <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('whiztutor.png');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">WhizTutor</h3>
+                        <p class="project-description">An app facilitating connections between students and on-demand
+                            private tutors, thereby enhancing academic performance.</p>
+                        <a href="https://www.whiztutorapp.com/" class="project-link" target="_blank">
+                            View Project <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('gogov.png');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">GoGov</h3>
+                        <p class="project-description">GoGov, offering specialized CRM, Code Enforcement, Citizen Notifications,
+                            Online Permitting Licensing, and Mobile Software solutions to local governments.</p>
+                        <a href="https://www.gogovapps.com/" class="project-link" target="_blank">
+                            View Project <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('searchlight-headline.png');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Searchligh Headline</h3>
+                        <p class="project-description">A  platform accessible by Headline’s
+                            global investment team. It continuously scans millions of websites worldwide to identify fast-growing
+                            companies for investor consideration.</p>
+                        <a href="https://searchlight.headline.com/" class="project-link" target="_blank">
+                            View Project <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                <div class="skill-tag">HTML5</div>
+                <div class="skill-tag">CSS3</div>
+                <div class="skill-tag">Tailwind CSS</div>
+                <div class="skill-tag">Material UI</div>
+                <div class="skill-tag">Ant Design</div>
+                <div class="skill-tag">JavaScript</div>
+                <div class="skill-tag primary">React.js</div>
+                <div class="skill-tag">Redux</div>
+                <div class="skill-tag">Express.js</div>
+                <div class="skill-tag primary">Next.js</div>
+                <div class="skill-tag">Node.js</div>
+                <div class="skill-tag">Ruby</div>
+                <div class="skill-tag primary">Ruby on Rails</div>
+                <div class="skill-tag">Sinatra</div>
+                <div class="skill-tag primary">Python</div>
+                <div class="skill-tag">Flask</div>
+                <div class="skill-tag primary">Django</div>
+                <div class="skill-tag">MySQL</div>
+                <div class="skill-tag">PostgreSQL</div>
+                <div class="skill-tag">SQLite</div>
+                <div class="skill-tag">MongoDB</div>
+                <div class="skill-tag">Supabase</div>
+                <div class="skill-tag primary">AWS</div>
+                <div class="skill-tag">Render</div>
+                <div class="skill-tag">Heroku</div>
+                <div class="skill-tag primary">DigitalOcean</div>
+                <div class="skill-tag">Shopify</div>
+                <div class="skill-tag">Headless UI</div>
+                <div class="skill-tag">Jest</div>
+                <div class="skill-tag">Rspec</div>
+                <div class="skill-tag">Capybarra</div>
+                <div class="skill-tag">RESTful APIs</div>
+                <div class="skill-tag">GraphQL</div>
+                <div class="skill-tag">Git</div>
+                <div class="skill-tag">Figma</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <div class="education-degree">Bachelor of Science in Software Engineering</div>
+                <div class="education-university">Lahore, Pakistan</div>
+                <div class="education-period">Sep 2016 - Aug 2020</div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p class="footer-text">© 2023 Samad Mahmood. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
